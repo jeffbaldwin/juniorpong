@@ -1,0 +1,527 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+
+.content {
+    position: relative;   
+}
+
+.playerSelect {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(0,-100vh);
+    -moz-transform: translate(0,-100vh);
+    -o-transform: translate(0,-100vh);
+    -ms-transform: translate(0,-100vh);
+    transform: translate(0,-100vh);
+}
+
+.player1 {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 100vh;
+    right: 50vw;
+    opacity: 0.9;
+}
+
+.player1Score {
+    position: absolute;
+    width: 50vw;
+    height: 100vh;
+    left: 0;
+    text-align: center;
+    z-index: 1;
+}
+
+.animateScore1, .animateScore2 {
+    z-index: 1;
+    -webkit-animation: fade-in 0.5s forwards;
+    -moz-animation:    fade-in 0.5s forwards;
+    -o-animation:      fade-in 0.5s forwards;
+    animation:         fade-in 0.5s forwards;
+    -webkit-animation-delay: 1.0s;
+    -moz-animation-delay: 1.0s;
+    -o-animation-delay: 1.0s;
+    animation: animation-delay: 1.0s;
+    
+/*
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(0,-60px);
+    -moz-transform: translate(0,-60px);
+    -o-transform: translate(0,-60px);
+    -ms-transform: translate(0,-60px);
+    transform: translate(0,-60px);
+    -webkit-transition-delay: 3.5s;
+    -moz-transition-delay: 3.5s;
+    -o-transition-delay: 3.5s;
+    transition: transition-delay: 3.5s;
+*/
+}
+
+@-webkit-keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#score1 {
+    opacity: 0;
+    font-size:150px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
+    color: #FFFFFF;
+	font-family:Arial, Helvetica, sans-serif; 
+    margin-top: calc(8vh + 0px); 
+    z-index: 1;
+}
+
+.player2 {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 100vh;
+    left: 50vw;
+    opacity: 0.9;
+}
+
+.player2Score {
+    position: absolute;
+    width: 50vw;
+    height: 100vh;
+    left: 50vw;
+    text-align: center;
+    z-index: 1;
+}
+
+
+#score2 {
+    opacity: 0;
+    font-size:150px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
+    color: #FFFFFF;
+	font-family:Arial, Helvetica, sans-serif; 
+    margin-top: calc(8vh + 0px);
+/*
+    margin-left: calc(25vw - 50px);
+    margin-top: 5vh;
+*/
+}
+
+.winnerText {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+
+.winnerText h1 {
+    opacity: 0;
+    font-size:100px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
+    color: #FFFFFF;
+	font-family:Arial, Helvetica, sans-serif; 
+    margin-top: calc(10vh - 100px);
+}
+
+.winnerTextAnimation {
+    z-index: 1;
+    -webkit-animation: fade-in-winner 1s forwards;
+    -moz-animation:    fade-in-winner 1s forwards;
+    -o-animation:      fade-in-winner 1s forwards;
+    animation:         fade-in-winner 1s forwards;
+    
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(0,100px);
+    -moz-transform: translate(0,100px);
+    -o-transform: translate(0,100px);
+    -ms-transform: translate(0,100px);
+    transform: translate(0,100px);
+}
+
+@-webkit-keyframes fade-in-winner {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes fade-in-winner {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes fade-in-winner {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fade-in-winner {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.scoreAnimation {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1; 
+}
+
+/*
+.resetPlayer1Win {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(-50vw,0vh);
+    -moz-transform: translate(-50vw,0vh);
+    -o-transform: translate(-50vw,0vh);
+    -ms-transform: translate(-50vw,0vh);
+    transform: translate(-50vw,0vh);
+}
+
+.resetPlayer2Win {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(50vw,0);
+    -moz-transform: translate(50vw,0);
+    -o-transform: translate(50vw,0);
+    -ms-transform: translate(50vw,0);
+    transform: translate(50vw,0);
+}
+
+.resetPlayer1Image {
+    -webkit-transition: 5s ease-in-out;
+    -moz-transition: 5s ease-in-out;
+    -o-transition: 5s ease-in-out;
+    transition: 5s ease-in-out;
+    -webkit-transform: translate(-25vw,0vh);
+    -moz-transform: translate(-25vw,0vh);
+    -o-transform: translate(-25vw,0vh);
+    -ms-transform: translate(-25vw,0vh);
+    transform: translate(-25vw,0vh);
+}
+*/
+
+/* Player 1 background move on win */
+.awardPlayer1 {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(50vw,-100vh);
+    -moz-transform: translate(50vw,-100vh);
+    -o-transform: translate(50vw,-100vh);
+    -ms-transform: translate(50vw,-100vh);
+    transform: translate(50vw,-100vh);
+}
+
+/* Player 1 background move on loss */
+.loserPlayer1 {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(-50vw,-100vh);
+    -moz-transform: translate(-50vw,-100vh);
+    -o-transform: translate(-50vw,-100vh);
+    -ms-transform: translate(-50vw,-100vh);
+    transform: translate(-50vw,-100vh);
+}
+
+/* Player 1 image move on win */
+.awardPlayer1Image {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(25vw,-100vh);
+    -moz-transform: translate(25vw,-100vh);
+    -o-transform: translate(25vw,-100vh);
+    -ms-transform: translate(25vw,-100vh);
+    transform: translate(25vw,-100vh);
+}
+
+/* Player 1 image move on loss */
+.loserPlayer1Image {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(-50vw,-100vh);
+    -moz-transform: translate(-50vw,-100vh);
+    -o-transform: translate(-50vw,-100vh);
+    -ms-transform: translate(-50vw,-100vh);
+    transform: translate(-50vw,-100vh);
+}
+
+/* Player 2 background move on win */
+.awardPlayer2 {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(-50vw,-100vh);
+    -moz-transform: translate(-50vw,-100vh);
+    -o-transform: translate(-50vw,-100vh);
+    -ms-transform: translate(-50vw,-100vh);
+    transform: translate(-50vw,-100vh);
+}
+
+/* Player 2 background move on loss */
+.loserPlayer2 {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(50vw,-100vh);
+    -moz-transform: translate(50vw,-100vh);
+    -o-transform: translate(50vw,-100vh);
+    -ms-transform: translate(50vw,-100vh);
+    transform: translate(50vw,-100vh);
+}
+
+/* Player 2 image move on win */
+.awardPlayer2Image {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(-25vw,-100vh);
+    -moz-transform: translate(-25vw,-100vh);
+    -o-transform: translate(-25vw,-100vh);
+    -ms-transform: translate(-25vw,-100vh);
+    transform: translate(-25vw,-100vh);
+}
+
+/* Player 2 image move on loss */
+.loserPlayer2Image {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(50vw,-100vh);
+    -moz-transform: translate(50vw,-100vh);
+    -o-transform: translate(50vw,-100vh);
+    -ms-transform: translate(50vw,-100vh);
+    transform: translate(50vw,-100vh);
+}
+
+
+#landingPage {
+    position: absolute;
+    background-color: #EEEEEE;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1); 
+    z-index: 100;
+}
+
+#juniorLogo {
+    position: absolute;
+    top: calc(50vh - 125px);
+    left: calc(50vw - 290px);
+}
+
+.gameInformation {
+    position: absolute;
+    background-color: #EEEEEE;
+    width: 100vw;
+    height: 30vh;
+    top: 100vh;
+    left: 0;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gameInformationAnimation {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(0,-30vh);
+    -moz-transform: translate(0,-30vh);
+    -o-transform: translate(0,-30vh);
+    -ms-transform: translate(0,-30vh);
+    transform: translate(0,-30vh);
+    -webkit-transition-delay: 3.5s;
+    -moz-transition-delay: 3.5s;
+    -o-transition-delay: 3.5s;
+    transition: transition-delay: 3.5s; 
+}
+
+.gameTime {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(0,-100vh);
+    -moz-transform: translate(0,-100vh);
+    -o-transform: translate(0,-100vh);
+    -ms-transform: translate(0,-100vh);
+    transform: translate(0,-100vh);
+}
+
+.exitTime {
+    -webkit-transform: translate(0,100vh);
+    -moz-transform: translate(0,100vh);
+    -o-transform: translate(0,100vh);
+    -ms-transform: translate(0,100vh);
+    transform: translate(0,100vh);
+}
+
+#time {
+    position: relative;
+    font-size:100px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
+    color: #000000;
+	font-family:Arial, Helvetica, sans-serif; 
+    top: calc(50vh - 55px);
+    z-index: 100
+}
+
+#replayTimer {
+    position:relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #FFFFFF;
+    opacity: 0.7;
+    text-align: center;
+}
+
+#timerWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+#player1serve {
+    position: absolute;
+    left: 20px;
+    margin-top: calc(15vh - 37.5px);
+}
+
+#player2serve {
+    position: absolute;
+    right: 20px;
+    margin-top: calc(15vh - 37.5px);   
+}
+
+/* --- PROFILES --- */
+
+
+.player1Name {
+    width: 50vw;
+    opacity: 1;
+    font-size:100px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
+    color: #FFFFFF;
+	font-family:Arial, Helvetica, sans-serif; 
+    margin-top: calc(8vh + 40px);
+    margin-left: calc(75vw - 115px);
+}
+
+.player1NameAnimate, .player2NameAnimate {
+    z-index: 1;
+    -webkit-animation: fade-out 0.5s forwards;
+    -moz-animation:    fade-out 0.5s forwards;
+    -o-animation:      fade-out 0.5s forwards;
+    animation:         fade-out 0.5s forwards;
+    -webkit-animation-delay: 3.5s;
+    -moz-animation-delay: 3.5s;
+    -o-animation-delay: 3.5s;
+    animation: animation-delay: 3.5s;
+    
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(0,-100px);
+    -moz-transform: translate(0,-100px);
+    -o-transform: translate(0,-100px);
+    -ms-transform: translate(0,-100px);
+    transform: translate(0,-100px);
+    -webkit-transition-delay: 3.5s;
+    -moz-transition-delay: 3.5s;
+    -o-transition-delay: 3.5s;
+    transition: transition-delay: 3.5s;
+}
+
+@-webkit-keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-o-keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+.player1ImageWrapper {
+    position: absolute;
+    width: 50vw;
+    height: 100vh;
+    left: 0;
+    bottom: 0;
+    top: 100vh;
+}
+
+.player1Image {
+    position: absolute;
+    bottom: 0vh;
+    margin-left: calc(25vw - 180px);
+    opacity: 0.9;
+}
+
+.player2Name {
+    width: 50vw;
+    opacity: 1;
+    font-size:100px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
+    color: #FFFFFF;
+	font-family:Arial, Helvetica, sans-serif; 
+    margin-top: calc(8vh + 40px);
+    margin-left: calc(25vw - 120px);
+}
+
+.player2ImageWrapper {
+    position: absolute;
+    width: 50vw;
+    height: 100vh;
+    left: 50vw;
+    top: 100vh;
+}
+
+.player2Image {
+    position: absolute;
+    bottom: 0vh;
+    margin-left: calc(25vw - 180px);
+    opacity: 0.9;
+}
+
