@@ -1,40 +1,39 @@
 
 // JQuery Interactions //
 
+// ---------------------------------------- Variables ---------------------------------------- //
 
-//$(document).ready(function(){
-//	       $('#landingPage').click(function(){
-//		      $('#landingPage').toggleClass('gameTime'),
-//            });
-//    
-//            $('#timerWrapper').click(function(){
-//                  $(this).toggleClass('exitTime')
-//                });
-// 
-//        });
-
-// Variables //
-
-var score_player1 = 0;
-var score_player2 = 0;
-var timer = document.getElementById('replayTimer');
-var tenSeconds = 10;
-var player1;
-var player2;
-var player1serving = true;
-var gameOver = true;
-var winning_player;
-var player1won = false;
-var player2won = false;
-player1assigned = false;
-player2assigned = false;
-var count = 0;
-var timerShown = false;
 document.onkeydown = key_control;
 document.onkeyup = resetKeys;
 
+player1assigned = false;
+player2assigned = false;
 
-// Load Page //
+var player1;
+var player2;
+
+var player1serving = true;
+
+var score_player1 = 0;
+var score_player2 = 0;
+
+var winning_player;
+var count = 0;
+var gameOver = true;
+
+var player1won = false;
+var player2won = false;
+
+var timerShown = false;
+
+var tenSeconds = 10;
+var timer = document.getElementById('replayTimer');
+
+var resettingGame = false;
+
+
+
+// ---------------------------------------- Load Page ---------------------------------------- //
 
 window.onload = function() {
     timeLeftToResetHtml = document.querySelector('#time');
@@ -42,7 +41,8 @@ window.onload = function() {
 }
 
 
-// Key Control //
+
+// ---------------------------------------- Key Control ---------------------------------------- //
 
 var keys = {
     z: false,
@@ -64,72 +64,76 @@ function resetKeys(e) {
 
 
 
-// Assign Players //
+// ---------------------------------------- Assign Players ---------------------------------------- //
 
 function assign_players(e){
+    
     if(e.keyCode == 81 && player1assigned == false){
         console.log("Q was pressed");
+        player1assigned = true
         
+        $('.player1').toggleClass('playerSelect'),
+        $('.player1ImageWrapper').toggleClass('playerSelect');
         
-        player1assigned = true;
-        $(document).ready(function(){
-            $('.player1').toggleClass('playerSelect'),
-            $('.player1ImageWrapper').toggleClass('playerSelect');
-        });
         if(player2assigned == false){
-            $(document).ready(function(){
-                $('#landingPage').toggleClass('gameTime');
-                
-                // go to start game 
-                console.log(window.location.href);
-                
-//                if(window.location.href !== "http://localhost:5000/game") {
-//                    setTimeout(function() {
-//                        window.location.href = "/game";
-//                    }, 500);
-//                }
-                
-            });
+            $('#landingPage').toggleClass('gameTime');
+            // console.log(window.location.href);
         }
+        
         initiate();
-    } else if(e.keyCode == 80 && player2assigned == false){
+    } 
+    
+    else if(e.keyCode == 80 && player2assigned == false){
         console.log("P was pressed");
         player2assigned = true;
-        $(document).ready(function(){
-            $('.player2').toggleClass('playerSelect'),
-            $('.player2ImageWrapper').toggleClass('playerSelect');
-        });
+        
+        $('.player2').toggleClass('playerSelect'),
+        $('.player2ImageWrapper').toggleClass('playerSelect');
+        
         if(player1assigned == false){
-            $(document).ready(function(){
-                $('#landingPage').toggleClass('gameTime');
-            });
+            $('#landingPage').toggleClass('gameTime');
         }
+        
         initiate();
     }
 }
 
 
-// Initiate Game //
+
+// ---------------------------------------- Initiate Game ---------------------------------------- //
 
 function initiate(){
+    
     if(player1assigned == true && player2assigned == true){
+        
         $('.gameInformation').toggleClass('gameInformationAnimation'),
         $('.player1Name').toggleClass('player1NameAnimate'),
         $('.player2Name').toggleClass('player2NameAnimate');
+        
         setTimeout(function(){
+            
+            document.getElementById('score1').style.display = "block";
+            document.getElementById('score2').style.display = "block";
+            document.getElementById('score1').innerHTML = score_player1;	
+            document.getElementById('score2').innerHTML = score_player2;
             $('#score1').toggleClass('animateScore1'),
             $('#score2').toggleClass('animateScore2');
+            
         }, 3500);
-        assign_serve();
+
         setTimeout(function () {
-            gameOver = false;   
-        }, 5000);
+            gameOver = false;
+            assign_serve();
+        }, 3500);
     }
 }
 
-// Serving //
+
+
+// ---------------------------------------- Serving ---------------------------------------- //
 
 function assign_serve(){
+    
 //    if((player1.rank - player2.rank)<0)   {
 //        player1serving = false;
 //    } else if ((player1.rank - player2.rank)>0)   {
@@ -155,6 +159,9 @@ function assign_serve(){
                 player1serving = false;
             }
         }
+    // Remove this bit later
+    } else if((score_player1 + score_player2) == 0){
+        player1serving = true;
     // Change the serving player every 2 points
     } else if(((score_player1 + score_player2) % 2 == 0) && ((score_player1 + score_player2) > 0)) {
         if(player1serving == true) {
@@ -183,7 +190,8 @@ function change_serve_icon() {
 }
 
 
-// GameScoring // 
+
+// ---------------------------------------- GameScoring ---------------------------------------- // 
 
 function scoring(e){
     if(e.keyCode == 90){
@@ -197,6 +205,7 @@ function scoring(e){
         }
         keys['m'] = true;
     }
+    
     if(keys['z'] && keys['m']) {
         reset_game();
         hideTimer();
@@ -232,7 +241,8 @@ function check_score(){
 }
 
 
-// Game Ending //
+
+// ---------------------------------------- Game Ending ---------------------------------------- //
 
 function end_game(){
     gameOver = true;
@@ -241,55 +251,52 @@ function end_game(){
     setTimeout(function () {
         showTimer();
         timerShown = true;
-    }, 5000);      
+    }, 000);      
 }
 
 function player1win(){
     document.getElementById('score1').style.display = "none";
     document.getElementById('score2').style.display = "none";
-    $(document).ready(function(){
-        $('.player1').toggleClass('awardPlayer1'),
-        $('.player2').toggleClass('loserPlayer2'),
-        $('.player1ImageWrapper').toggleClass('awardPlayer1Image'),
-        $('.player2ImageWrapper').toggleClass('loserPlayer2Image'),
-        $('.winnerText h1').toggleClass('winnerTextAnimation');
-    });
+    
+    $('.player1').toggleClass('awardPlayer1'),
+    $('.player2').toggleClass('loserPlayer2'),
+    $('.player1ImageWrapper').toggleClass('awardPlayer1Image'),
+    $('.player2ImageWrapper').toggleClass('loserPlayer2Image'),
+    $('.winnerText h1').toggleClass('winnerTextAnimation');
+    
     console.log("Winning Player is Player 1");
 }
 
 function player2win(){
     document.getElementById('score1').style.display = "none";
     document.getElementById('score2').style.display = "none";
-    $(document).ready(function(){
-        $('.player1').toggleClass('loserPlayer1'),
-        $('.player2').toggleClass('awardPlayer2'),
-        $('.player1ImageWrapper').toggleClass('loserPlayer1Image'),
-        $('.player2ImageWrapper').toggleClass('awardPlayer2Image'),
-        $('.winnerText h1').toggleClass('winnerTextAnimation');
-    });
+    
+    $('.player1').toggleClass('loserPlayer1'),
+    $('.player2').toggleClass('awardPlayer2'),
+    $('.player1ImageWrapper').toggleClass('loserPlayer1Image'),
+    $('.player2ImageWrapper').toggleClass('awardPlayer2Image'),
+    $('.winnerText h1').toggleClass('winnerTextAnimation');
+    
     console.log("Winning Player is Player 2");
 }
     
     
-// Countdown //
 
-//var seconds = 10;
-//var myTimer = setInterval(function(){startTimer(seconds);},1000);
-
+// ---------------------------------------- Countdown ---------------------------------------- //
 
 var timeCount;
 var startTimer;
 
 function showTimer(){
+    timeLeftToResetHtml.textContent = '';
     document.getElementById('replayTimer').style.display = "block";
-    timeLeftToResetHtml.textContent = 'Play Again?';
     timeCount = tenSeconds;
     startTimer = setInterval(timerCountDown, 1000); 
 }
 
 function timerCountDown(){
+    $('.radial-timer').addClass('s-animate');
     console.log(timeCount);
-
     seconds = parseInt(timeCount % 60, 10);
     seconds = seconds < 10 ? (0 + seconds) : seconds;
     timeCount--;
@@ -298,6 +305,8 @@ function timerCountDown(){
     if (seconds <= 0) {
         console.log('done');
         clearInterval(startTimer);
+        resettingGame = true;
+        reset_game();
     }
 }
 
@@ -306,41 +315,62 @@ function hideTimer(replayTimer){
 }
     
 
-// Reset Game //
+
+// ---------------------------------------- Reset Game ---------------------------------------- //
 
 function reset_game(){
     if(timerShown == true){
         console.log("The game has reset");
         timerShown = false;
+        hideTimer();
         
         if(player1won == true && player2won == false) {
             reset_player1win();
         } else if (player2won == true && player1won == false) {
             reset_player2win();
         }
-
+        
+        if(resettingGame == true){
+            full_reset();
+        }
+        
+        clearInterval(startTimer);
         reset_score();
     }
 }
 
 function reset_player1win(){
     console.log("Player 1 just won");
-    $(document).ready(function(){
-        $('.player1').toggleClass('awardPlayer1'),
-        $('.player2').toggleClass('loserPlayer2'),
-        $('.player1ImageWrapper').toggleClass('awardPlayer1Image'),
-        $('.player2ImageWrapper').toggleClass('loserPlayer2Image');
-    });
+   
+    $('.player1').toggleClass('awardPlayer1'),
+    $('.player2').toggleClass('loserPlayer2'),
+    $('.player1ImageWrapper').toggleClass('awardPlayer1Image'),
+    $('.player2ImageWrapper').toggleClass('loserPlayer2Image');
 }
 
 function reset_player2win(){
     console.log("Player 2 just won");
-    $(document).ready(function(){
-        $('.player1').toggleClass('loserPlayer1'),
-        $('.player2').toggleClass('awardPlayer2'),
-        $('.player1ImageWrapper').toggleClass('loserPlayer1Image'),
-        $('.player2ImageWrapper').toggleClass('awardPlayer2Image');
-    });
+
+    $('.player1').toggleClass('loserPlayer1'),
+    $('.player2').toggleClass('awardPlayer2'),
+    $('.player1ImageWrapper').toggleClass('loserPlayer1Image'),
+    $('.player2ImageWrapper').toggleClass('awardPlayer2Image');
+}
+
+function full_reset(){
+    console.log("It's a full reset");
+    
+    player1assigned = false;
+    player2assigned = false;
+    //move player backgrounds & player images down
+    $('#landingPage').toggleClass('gameTime'),
+    $('.player1').toggleClass('playerSelect'),
+    $('.player1ImageWrapper').toggleClass('playerSelect'),
+    $('.player1Name').toggleClass('player1NameAnimate'),
+    $('.player2').toggleClass('playerSelect'),
+    $('.player2ImageWrapper').toggleClass('playerSelect'),
+    $('.player2Name').toggleClass('player2NameAnimate');
+    $('.gameInformation').toggleClass('gameInformationAnimation');
 }
 
 function reset_score(){
@@ -349,7 +379,7 @@ function reset_score(){
     
     setTimeout(function () {
         gameOver = false;   
-    }, 5000);
+    }, 3000);
     
     change_serve_icon();
     
@@ -360,12 +390,19 @@ function reset_score(){
     
 	score_player1 = 0;
 	score_player2 = 0;
-    document.getElementById('score1').style.display = "block";
-    document.getElementById('score2').style.display = "block";
-	document.getElementById('score1').innerHTML = score_player1;	
-	document.getElementById('score2').innerHTML = score_player2;
     
-    console.log('reset game');
+    if(resettingGame == false){
+        document.getElementById('score1').style.display = "block";
+        document.getElementById('score2').style.display = "block";
+        document.getElementById('score1').innerHTML = score_player1;	
+        document.getElementById('score2').innerHTML = score_player2;
+    } else if(resettingGame == true){
+        $('#score1').toggleClass('animateScore1'),
+        $('#score2').toggleClass('animateScore2');
+        resettingGame = false;
+    }
+    
+    $('.radial-timer').removeClass('s-animate');
 }
  
 
