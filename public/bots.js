@@ -11,6 +11,6 @@ var Bot = new TwitterBot({
 // ---------------------------------------- Set up SlackBot ---------------------------------------- //
 
 var Slack = require('node-slack');
-var slack = new Slack("https://hooks.slack.com/services/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");
+var slack = new Slack("https://hooks.slack.com/services/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, options");
 
 

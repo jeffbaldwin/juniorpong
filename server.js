@@ -11,10 +11,10 @@ var path = require('path');
 //	token: 'CldyQ1SkHRgGlt5qkd7ZL7D1'
 //});
 
-app.post('/outgoing', function(req, res){
-	var hook = slackhook.respond(req.body);
-	res.json({text: 'Hi ' + hook.user_name, username: 'Dr. Nick'});
-});
+//app.post('/outgoing', function(req, res){
+//	var hook = slackhook.respond(req.body);
+//	res.json({text: 'Hi ' + hook.user_name, username: 'Dr. Nick'});
+//});
 
 // import data
 var data = require('./data/players');
@@ -53,15 +53,31 @@ app.get('/game', function(req, res) {
     }});
 });
 
-// test route
-app.get('/', function (req, res) { res.status(200).send('Hello world!') });
-
-// error handler
-app.use(function (err, req, res, next) {
-  console.error(err.stack);
-  res.status(400).send(err.message);
-});
+//// test route
+//app.get('/', function (req, res) { res.status(200).send('Hello world!') });
+//
+//// error handler
+//app.use(function (err, req, res, next) {
+//  console.error(err.stack);
+//  res.status(400).send(err.message);
+//});
 
 app.listen(port, function(req, res){
     console.log('listening on port: ' + port);
 });
+
+
+// ---------------------------------------- Set up Twitterbot ---------------------------------------- //
+
+var TwitterBot = require("node-twitterbot").TwitterBot;
+var Bot = new TwitterBot({
+  "consumer_key": "KKMIyQGVkXx8pT7OaYWiQB41N",
+  "consumer_secret": "1TqTG6E0ufyS2DzFH04OSrhtCu6xgak4paax0VFUc3DDL2ln8i",
+  "access_token": "4500636500-Sip9ymTek1O2qJma4eYJan5OLZ8qT3KkVvGkwvr",
+  "access_token_secret": "NYv9lydGg54gnlnQdFbWf7R3BbyJRZ4PCVS4i16KpBeZ6"
+});
+
+// ---------------------------------------- Set up SlackBot ---------------------------------------- //
+
+var Slack = require('node-slack');
+var slack = new Slack("https://hooks.slack.com/services/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, options");
