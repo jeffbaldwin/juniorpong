@@ -552,7 +552,7 @@ function initiate(){
 		}, 5500);
 		
 		
-//		slackStartGame();
+		slackStartGame();
 
         setTimeout(function () {
             gameOver = false;
@@ -704,8 +704,8 @@ function end_game(){
         timerShown = true;
     }, 2000);    
 	
-//	tweetScore();
-//	slackScore();
+	tweetScore();
+	slackScore();
 }
 
 function player1win(){
