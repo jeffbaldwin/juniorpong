@@ -704,8 +704,8 @@ function end_game(){
         timerShown = true;
     }, 2000);    
 	
-	tweetScore();
 	slackScore();
+//	tweetScore();
 }
 
 function player1win(){
@@ -801,6 +801,79 @@ function addGameResultToDB(winningPlayer, losingPlayer){
 
 // ---------------------------------------- Tweet and Slack ---------------------------------------- //
 
+function slackStartGame(){
+    var startGameSlackText = player1Name + " is now facing off against " + player2Name + "! Who do you want to win?";
+    console.log(startGameSlackText);
+    
+    $.ajax({
+        url: "https://hooks.slack.com/services/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",
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        processData: false,
+        data: '{"text":' + '"' + startGameSlackText + '" , "channel": "#juniorpong", "username": "pongbot", "icon_emoji": ":table_tennis_paddle_and_ball:"}',
+        success: function (data) {
+          alert(JSON.stringify(data));
+        },
+        error: function(){
+//          alert("Cannot get data");
+            }
+    });
+    
+	console.log('sent a slack msg that game has started');
+}
+
+
+
+
+function slackScore(){
+    
+    var player1WinnerText = player1Name + " just beat " + player2Name + " " + score_player1 + "-" + score_player2 + "! " + player1Name + " is now " + player1Wins + "-" + player1Losses + " while " + player2Name + " is now " + player2Wins + "-" + player2Losses + ".";
+    
+    var player2WinnerText =  player2Name + " just beat " + player1Name + " " + score_player2 + "-" + score_player1 + "! " + player2Name + " is now " + player2Wins + "-" + player2Losses + " while " + player1Name + " is now " + player1Wins + "-" + player1Losses + ".";
+    
+	if(player1won == true){
+        
+        $.ajax({
+            url: "https://hooks.slack.com/services/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",
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            processData: false,
+            data: '{"text":' + '"' + player1WinnerText + '", "channel": "#juniorpong", "username": "pongbot", "icon_emoji": ":table_tennis_paddle_and_ball:"}',
+            success: function (data) {
+              alert(JSON.stringify(data));
+            },
+            error: function(){
+    //          alert("Cannot get data");
+            }
+        });
+        
+		console.log('sent a slack msg player 1 wins');
+        
+	} else if(player2won == true){
+        
+        $.ajax({
+            url: "https://hooks.slack.com/services/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",
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            processData: false,
+            data: '{"text":' + '"' + player2WinnerText + '", "channel": "#juniorpong", "username": "pongbot", "icon_emoji": ":table_tennis_paddle_and_ball:"}',
+            success: function (data) {
+              alert(JSON.stringify(data));
+            },
+            error: function(){
+    //          alert("Cannot get data");
+            }
+        });
+        
+		console.log('sent a slack msg player 2 wins');
+        
+	}
+}
+
+
 function tweetScore(){
 	if(player1won == true){
 		Bot.tweet(player1Name + " beat " + player2Name + " " + score_player1 + " - " + score_player2 + "!");
@@ -809,35 +882,6 @@ function tweetScore(){
 		Bot.tweet(player2Name + " beat " + player2name + " " +score_player2 + " - " + score_player1 + "!");
 		console.log('sent a tweet');
 	}
-}
-
-function slackScore(){
-	if(player1won == true){
-		slack.send({
-			text: 'player1Name + " just beat " + player2Name + " " + score_player1 + "-" + score_player2 + "!" /n player1Name + " is now " + player1Wins + "-" + player1Losses + " while " + player2Name + " is now " + player2Wins + "-" + player2Losses + "."',
-			channel: '#juniorpong',
-			username: 'pongbot',
-			icon_emoji: 'table_tennis_paddle_and_ball',
-		});
-		console.log('sent a slack msg');
-	} else if(player2won == true){
-		slack.send({
-			text: 'player2Name + " just beat " + player1Name + " " + score_player2 + "-" + score_player1 + "!" /n player2Name + " is now " + player2Wins + "-" + player2Losses + " while " + player1Name + " is now " + player1Wins + "-" + player1Losses + "."',
-			channel: '#juniorpong',
-			username: 'pongbot',
-			icon_emoji: 'table_tennis_paddle_and_ball',
-		});
-		console.log('sent a slack msg');
-	}
-}
-
-function slackStartGame(){
-	slack.send({
-		text: 'player1Name + " is now facing off against " + player2Name + "!/n Who do you want to win?',
-		username: 'pongbot',
-		icon_emoji: 'table_tennis_paddle_and_ball',
-	});
-	console.log('sent a slack msg');
 }
 
 
