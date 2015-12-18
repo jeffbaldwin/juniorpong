@@ -1,63 +1,96 @@
 <!DOCTYPE html>
 
+
 <html>
 
 	<head>
 		<meta charset="utf-8">
-		<title>Junior Scoreboard</title>
+		<title>Junior Pong</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<link href="css/style.css" rel="stylesheet" type="text/css">
-        
+		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
         <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="bundle.js"></script>
         <script type="text/javascript" src="script.js"></script>
-        
     </head>
     
         
 	<body>
         
-            <style>
-                .player1 {
-                    background-color: <%= ctx.player1.bgColor %>
-                }
-                .player2 {
-                    background-color: <%= ctx.player2.bgColor %>
-                }
-            </style>
+			<div id="landingPage">
+                <img id="juniorLogo" src="img/juniorLogo.png" alt="junior logo">
+				<img id="pingPongLogo" src="img/ping-pong-logo.svg" alt="ping pong logo">
+				<img id="player1ServeLogo" class="fadeOut2" src="img/ping-pong-logo-p1serve-01.svg" alt="ping pong logo">
+				<img id="player2ServeLogo" src="img/ping-pong-logo-p2serve-01.svg" alt="ping pong logo">
+            </div>  
+		
+			<div id="startContainer">
+				<h2 id="startText" class="fadeOut">Start!</h2>
+			</div>
         
-            <div class="player1Score">
-                <h1 id="score1">0</h1>
-            </div>
-        
-            <div class="player1" >
-                <h1 class="player1Name">ASH</h1>
-            </div>
-        
-            <div class="player1ImageWrapper" >
-                <img class="player1Image" src="<%=  ctx.player1.imageUrl %>" width="360" height="450">
-            </div>
+			<!--Player 1 stuff -->
+		
+				<!--The big score number -->
+				<div class="player1Score">
+					<h1 id="score1" class="fadeOut">0</h1>
+				</div>
 
-            <div class="player2Score">
-                <h1 id="score2">0</h1>
+				<!--The big name that goes away -->
+				<div class="player1">
+					<h1 id="player1Name"></h1>
+<!--					<h3 id="player1Record"><span id="player1Wins"></span> - <span id="player1Losses"></span></h2>-->
+				</div>
+		
+				<!--The small name that comes in -->
+				<div class="player1InfoDiv">
+					<h2 id="player1SmallName" class="fadeOut"></h2>
+					<div id="underline1"></div>
+					<h3 id="player1Record" class="fadeOut"><span id="player1Wins"></span> - <span id="player1Losses"></span></h2>
+				</div>
+
+				<!--The player image -->
+				<div class="player1ImageWrapper" >
+					<img id="player1Image" src="" class="fadeIn">
+<!--					width="500" height="500">-->
+				</div>
+		
+			<!--Player 2 stuff -->
+
+				<!--The big score number -->
+				<div class="player2Score">
+					<h1 id="score2" class="fadeOut">0</h1>
+				</div>
+
+				<!--The big name that goes away -->
+				<div class="player2">
+					<h1 id="player2Name"></h1>
+				</div>
+		
+				<!--The small name that comes in -->
+				<div class="player2InfoDiv">
+					<h2 id="player2SmallName" class="fadeOut"></h2>
+					<div id="underline2"></div>
+					<h3 id="player2Record" class="fadeOut"><span id="player2Wins"></span> - <span id="player2Losses"></span></h2>
+				</div>
+		
+				<!--The player image -->
+				<div class="player2ImageWrapper" >
+					<img id="player2Image" src="" width="500" height="500" class="fadeIn">
+				</div>
+		
+		
+			<div class="winnerText">
+                <h2 id="winnerText" class="fadeOut"></h1>
+				<h3 id="countdownText" class="fadeOut"></h3>
             </div>
-        
-            <div class="player2">
-                <h1 class="player2Name">JEFF</h1>
-            </div>
-        
-            <div class="player2ImageWrapper" >
-                <img class="player2Image" src="<%=  ctx.player2.imageUrl %>" width="360" height="450">
-            </div>
-        
+		
+			<!--Something -->		
+<!--
             <div class="gameInformation">
-                <img id="player1serve" src="img/player1serve.svg" alt="serving icon" width="75px" height="75px">
-                <img id="player2serve" src="img/player2serve.svg" alt="serving icon" width="75px" height="75px">
-                
                 <div id="timerWrapper">
-                
                     <div id="replayTimer">
                         <div id="time"></div>
                         <div class="radial-timer">
@@ -65,43 +98,12 @@
                             <div class="radial-timer-half"></div>
                         </div>
                     </div>
-                
-                
                 </div>
-                
             </div>
+-->
             
-            <div class="winnerText">
-                <h1>WINNER!</h1>
-            </div>
-        
-            <div id="landingPage">
-                <img id="juniorLogo" src="img/juniorLogo.png" alt="junior logo" width="570px" height="213.75px">
-            </div>        
             
-         
     </body>
-    
-    <script>
-        $(document).ready(function(){
-	       $('#nav-icon').click(function(){
-		      $(this).toggleClass('open'),
-                    $("#nav-overlay").toggleClass("visible"),
-                    $("#work, #about, #vimeo, #medium, #github, #linkedin, #instagram").toggleClass("reveal");
-	       });
-            
-        });
-         
-        $(window).scroll(function () {
-                var scrollTop = $(window).scrollTop();
-                var height = $(window).height();
-                var x = 100;
-            
-            $('.imgScroll').css({
-                'opacity': (((height - x) - (scrollTop)) / height)
-        });
-});
-    </script>
-	
+
 	
 </html>

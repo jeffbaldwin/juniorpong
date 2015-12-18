@@ -1,71 +1,25 @@
-body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+
+@font-face {
+    font-family: 'MaisonNeue-Light';
+    src: url('fonts/maisonneueweb-book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-
-.content {
-    position: relative;   
+@font-face {
+    font-family: 'MaisonNeue-Book';
+    src: url('fonts/maisonneueweb-book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.playerSelect {
-    -webkit-transition: 0.5s ease-in-out;
-    -moz-transition: 0.5s ease-in-out;
-    -o-transition: 0.5s ease-in-out;
-    transition: 0.5s ease-in-out;
-    -webkit-transform: translate(0,-100vh);
-    -moz-transform: translate(0,-100vh);
-    -o-transform: translate(0,-100vh);
-    -ms-transform: translate(0,-100vh);
-    transform: translate(0,-100vh);
+@font-face {
+    font-family: 'MaisonNeue-Bold';
+    src: url('fonts/maisonneueweb-bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.player1 {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    top: 100vh;
-    right: 50vw;
-    opacity: 0.9;
-}
-
-.player1Score {
-    position: absolute;
-    width: 50vw;
-    height: 100vh;
-    left: 0;
-    text-align: center;
-    z-index: 1;
-}
-
-.animateScore1, .animateScore2 {
-    z-index: 1;
-    -webkit-animation: fade-in 0.5s forwards;
-    -moz-animation:    fade-in 0.5s forwards;
-    -o-animation:      fade-in 0.5s forwards;
-    animation:         fade-in 0.5s forwards;
-    -webkit-animation-delay: 1.0s;
-    -moz-animation-delay: 1.0s;
-    -o-animation-delay: 1.0s;
-    animation: animation-delay: 1.0s;
-    
-/*
-    -webkit-transition: 0.5s ease-in-out;
-    -moz-transition: 0.5s ease-in-out;
-    -o-transition: 0.5s ease-in-out;
-    transition: 0.5s ease-in-out;
-    -webkit-transform: translate(0,-60px);
-    -moz-transform: translate(0,-60px);
-    -o-transform: translate(0,-60px);
-    -ms-transform: translate(0,-60px);
-    transform: translate(0,-60px);
-    -webkit-transition-delay: 3.5s;
-    -moz-transition-delay: 3.5s;
-    -o-transition-delay: 3.5s;
-    transition: transition-delay: 3.5s;
-*/
-}
 
 @-webkit-keyframes fade-in {
   0%   { opacity: 0; }
@@ -84,59 +38,450 @@ body {
   100% { opacity: 1; }
 }
 
-#score1 {
-    opacity: 0;
-    font-size:150px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
-    color: #FFFFFF;
-	font-family:Arial, Helvetica, sans-serif; 
-    margin-top: calc(8vh + 0px); 
+@-webkit-keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-o-keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-webkit-keyframes fade-in2 {
+  0%   { opacity: 0; }
+  100% { opacity: 0.8 }
+}
+@-moz-keyframes fade-in2 {
+  0%   { opacity: 0; }
+  100% { opacity: 0.8; }
+}
+@-o-keyframes fade-in2 {
+  0%   { opacity: 0; }
+  100% { opacity: 0.8; }
+}
+@keyframes fade-in2 {
+  0%   { opacity: 0; }
+  100% { opacity: 0.8; }
+}
+
+@-webkit-keyframes fade-out2 {
+  0%   { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes fade-out2 {
+  0%   { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+@-o-keyframes fade-out2 {
+  0%   { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+@keyframes fade-out2 {
+  0%   { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+.fadeIn {
     z-index: 1;
+    -webkit-animation: fade-in 1s forwards;
+    -moz-animation:    fade-in 1s forwards;
+    -o-animation:      fade-in 1s forwards;
+    animation:         fade-in 1s forwards;
+/*
+    -webkit-animation-delay: 1.0s;
+    -moz-animation-delay: 1.0s;
+    -o-animation-delay: 1.0s;
+    animation: animation-delay: 1.0s;
+*/
+}
+
+.fadeOut {
+    z-index: 1;
+    -webkit-animation: fade-out 1s forwards;
+    -moz-animation:    fade-out 1s forwards;
+    -o-animation:      fade-out 1s forwards;
+    animation:         fade-out 1s forwards;
+/*
+    -webkit-animation-delay: 1.0s;
+    -moz-animation-delay: 1.0s;
+    -o-animation-delay: 1.0s;
+    animation: animation-delay: 1.0s;
+*/
+}
+
+.fadeIn2 {
+    -webkit-animation: fade-in2 1s forwards;
+    -moz-animation:    fade-in2 1s forwards;
+    -o-animation:      fade-in2 1s forwards;
+    animation:         fade-in2 1s forwards;
+/*
+    -webkit-animation-delay: 1.0s;
+    -moz-animation-delay: 1.0s;
+    -o-animation-delay: 1.0s;
+    animation: animation-delay: 1.0s;
+*/
+}
+
+.fadeOut2 {
+    -webkit-animation: fade-out2 1s forwards;
+    -moz-animation:    fade-out2 1s forwards;
+    -o-animation:      fade-out2 1s forwards;
+    animation:         fade-out2 1s forwards;
+/*
+    -webkit-animation-delay: 1.0s;
+    -moz-animation-delay: 1.0s;
+    -o-animation-delay: 1.0s;
+    animation: animation-delay: 1.0s;
+*/
+}
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.content {
+    position: relative;   
+}
+
+.playerSelect {
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(0,-100vh);
+    -moz-transform: translate(0,-100vh);
+    -o-transform: translate(0,-100vh);
+    -ms-transform: translate(0,-100vh);
+    transform: translate(0,-100vh);
+}
+
+
+#startContainer {
+	width: 100vw;
+	height: 50vh;
+	top: 0;
+	left: 0;
+	text-align: center;
+}
+
+#startText {
+	opacity: 0;
+	visibility: hidden;
+}
+
+
+/* ---------- BIG NAMES ---------- */
+
+.player1 {
+    position: absolute;
+    width: 40vw;
+    height: 100vh;
+    top: 100vh;
+	left: 0;
+	/*    opacity: 0.9;*/
+}
+
+#player1Name {
+    position: relative;
+	text-align: center;
+    font-size: 100px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
+    color: #000000;
+	font-family: Arial, Helvetica, sans-serif; 
+    margin-top: calc(30vh - 150px);
+	visibility: hidden;
 }
 
 .player2 {
     position: absolute;
-    width: 100vw;
+    width: 40vw;
     height: 100vh;
     top: 100vh;
-    left: 50vw;
-    opacity: 0.9;
+    right: 0;
+/*    opacity: 0.9;*/
+}
+
+#player2Name {
+    position: relative;
+	text-align: center;
+	font-size: 100px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif; 
+	margin-top: calc(30vh - 150px);
+	visibility: hidden;
+}
+
+
+/* ---------- SCORES ---------- */
+
+.player1Score {
+    position: absolute;
+    width: 25vw;
+    height: auto;
+    left: 25vw;
+	top: calc(5vh - 50px);
+    z-index: 1;
+	opacity: 1;
+}
+
+#score1 {
+	text-align: center;
+    opacity: 0;
+    font-size: 300px; font-size: 20vw;
+    color: #000000;
+	font-family: 'MaisonNeue-Bold', 'Arial', 'Helvetica', sans-serif; 
+    margin-top: 0px; /*calc(8vh + 0px); */
+    z-index: 1;
+	visibility: hidden;
 }
 
 .player2Score {
     position: absolute;
-    width: 50vw;
-    height: 100vh;
+    width: 25vw;
+    height: auto;
     left: 50vw;
-    text-align: center;
+	top: calc(5vh - 50px);
     z-index: 1;
+	opacity: 1;
 }
-
 
 #score2 {
+	text-align: center;
     opacity: 0;
-    font-size:150px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
-    color: #FFFFFF;
-	font-family:Arial, Helvetica, sans-serif; 
-    margin-top: calc(8vh + 0px);
-/*
-    margin-left: calc(25vw - 50px);
-    margin-top: 5vh;
-*/
+    font-size: 300px; font-size: 20vw;
+    color: #000000;
+	font-family: 'MaisonNeue-Bold', 'Arial', 'Helvetica', sans-serif; 
+    margin-top: 0px; /*calc(8vh + 0px); */
+	visibility: hidden;
 }
+    
+/*
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translate(0,-60px);
+    -moz-transform: translate(0,-60px);
+    -o-transform: translate(0,-60px);
+    -ms-transform: translate(0,-60px);
+    transform: translate(0,-60px);
+    -webkit-transition-delay: 3.5s;
+    -moz-transition-delay: 3.5s;
+    -o-transition-delay: 3.5s;
+    transition: transition-delay: 3.5s;
+*/
+
+/* ---------- NAMES AND RECORDS ---------- */
+
+h2 {
+	font-family: 'MaisonNeue-Bold', 'Arial', 'Helvetica', sans-serif; 
+	font-weight: 600;
+	font-size: 60px; font-size: 5vw;
+	color: #000000;
+}
+
+h3 {
+	font-family: 'MaisonNeue-Light', 'Arial', 'Helvetica', sans-serif; 
+	font-weight: 300;
+	font-size: 40px; font-size: 3vw;
+	color: #000000;
+}
+
+.player1InfoDiv {
+	position: absolute;
+	width: 40vw;
+	left: 0;
+	top: 10vh;
+}
+
+.player2InfoDiv {
+	position: absolute;
+	width: 40vw;
+	right: 0;
+	top: 10vh;
+}
+
+#player1SmallName {
+	position: relative;
+	opacity: 0;
+	margin-left: 10%;
+	margin-bottom: 0px;
+	margin-top: 0;
+	text-align: left;
+	visibility: hidden;
+}
+
+#player2SmallName {
+	position: relative;
+	opacity: 0;
+	margin-right: 10%;
+	margin-bottom: 0px;
+	margin-top: 0;
+	text-align: right;
+	visibility: hidden;
+}
+
+/*
+.player1RecordDiv {
+	position: absolute;
+	width: auto;
+	height: auto;
+	left: 0;
+	top: 70px;
+}
+
+.player2RecordDiv {
+	position: absolute;
+	width: auto;
+	height: auto;
+	right: 0;
+	top: 70px;
+}
+*/
+
+#player1Record {
+	position: relative;
+	opacity: 0;
+	margin-left: 10%;
+	margin-top: 0px;
+	text-align: left;
+	visibility: hidden;
+}
+
+#player2Record {
+	position: relative;
+	opacity: 0;
+	margin-right: 10%;
+	margin-top: 0px;
+	text-align: right;
+	visibility: hidden;
+}
+
+#underline1 {
+	position: relative;
+	width: 60%;
+	height: 5px;
+	background-color: black;
+	opacity: 0;
+}
+
+#underline2 {
+	position: relative;
+	left: 40%;
+	width: 60%;
+	height: 5px;
+	background-color: black;
+	opacity: 0;
+}
+
+/* ---------- SERVE ICON ---------- */
+
+.serve1Wrapper {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: 75px;
+	left: 0;
+}
+
+#player1Serve {
+    position: relative;
+    margin-left: 20px;
+	visibility: hidden;
+}
+
+#player1ServeCover {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	opacity: 1;
+}
+
+.serve2Wrapper {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: 75px;
+	right: 0;
+}
+
+#player2Serve {
+    position: relative;
+    margin-right: 20px;
+	visibility: hidden;
+}
+
+#player2ServeCover {
+    position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	opacity: 1;
+}
+
+
+
+#player1ServeLogo {
+	position: absolute;
+	width: 50vw;
+	height: auto;
+	top: 15vh;
+	left: 25vw;
+	opacity: 0.8;
+	visibility: hidden;
+}
+
+#player2ServeLogo {
+	position: absolute;
+	width: 50vw;
+	height: auto;
+	top: 15vh;
+	left: 25vw;
+	opacity: 0.8;
+	visibility: hidden;
+}
+
+/* ---------- WINNER ---------- */
 
 .winnerText {
     position: absolute;
     width: 100vw;
     height: 100vh;
     text-align: center;
+	top: 0;
 }
 
-.winnerText h1 {
+#winnerText {
+	position: relative;
+	top: calc(3vh - 100px);
     opacity: 0;
-    font-size:100px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
-    color: #FFFFFF;
-	font-family:Arial, Helvetica, sans-serif; 
-    margin-top: calc(10vh - 100px);
+    font-size: 4vw; 
+    color: #000000;
+	font-family: 'MaisonNeue-Book', 'Arial', 'Helvetica', sans-serif; 
+    margin-top: 0;
+}
+
+#countdownText {
+	position: relative;
+	top: calc(3vh - 155px);
+    opacity: 0;
+    font-size: 2vw; 
+    color: #000000;
+	font-family: 'MaisonNeue-Light', 'Arial', 'Helvetica', sans-serif; 
+    margin-top: 0;
 }
 
 .winnerTextAnimation {
@@ -250,11 +595,11 @@ body {
     -moz-transition: 0.5s ease-in-out;
     -o-transition: 0.5s ease-in-out;
     transition: 0.5s ease-in-out;
-    -webkit-transform: translate(25vw,-100vh);
-    -moz-transform: translate(25vw,-100vh);
-    -o-transform: translate(25vw,-100vh);
-    -ms-transform: translate(25vw,-100vh);
-    transform: translate(25vw,-100vh);
+    -webkit-transform: translate(30vw,-100vh);
+    -moz-transform: translate(30vw,-100vh);
+    -o-transform: translate(30vw,-100vh);
+    -ms-transform: translate(30vw,-100vh);
+    transform: translate(30vw,-100vh);
 }
 
 /* Player 1 image move on loss */
@@ -302,11 +647,11 @@ body {
     -moz-transition: 0.5s ease-in-out;
     -o-transition: 0.5s ease-in-out;
     transition: 0.5s ease-in-out;
-    -webkit-transform: translate(-25vw,-100vh);
-    -moz-transform: translate(-25vw,-100vh);
-    -o-transform: translate(-25vw,-100vh);
-    -ms-transform: translate(-25vw,-100vh);
-    transform: translate(-25vw,-100vh);
+    -webkit-transform: translate(-30vw,-100vh);
+    -moz-transform: translate(-30vw,-100vh);
+    -o-transform: translate(-30vw,-100vh);
+    -ms-transform: translate(-30vw,-100vh);
+    transform: translate(-30vw,-100vh);
 }
 
 /* Player 2 image move on loss */
@@ -323,9 +668,11 @@ body {
 }
 
 
+/* --- LANDING PAGE --- */
+
 #landingPage {
     position: absolute;
-    background-color: #EEEEEE;
+    background-color: none;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -334,18 +681,29 @@ body {
 
 #juniorLogo {
     position: absolute;
-    top: calc(50vh - 125px);
-    left: calc(50vw - 290px);
+	width: 15%;
+	height: auto;
+    top: 85vh;
+    left: 42.5vw; 
+}
+
+#pingPongLogo {
+	position: absolute;
+	width: 50vw;
+	height: auto;
+	top: 15vh;
+	left: 25vw;
+	opacity: 0.8;
 }
 
 .gameInformation {
     position: absolute;
-    background-color: #EEEEEE;
+    background-color: none;
     width: 100vw;
     height: 30vh;
     top: 100vh;
     left: 0;
-    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+/*    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);*/
 }
 
 .gameInformationAnimation {
@@ -410,29 +768,43 @@ body {
     margin: 0;
 }
 
-#player1serve {
-    position: absolute;
-    left: 20px;
-    margin-top: calc(15vh - 37.5px);
-}
 
-#player2serve {
-    position: absolute;
-    right: 20px;
-    margin-top: calc(15vh - 37.5px);   
-}
 
 /* --- PROFILES --- */
 
+.player1ImageWrapper {
+    position: absolute;
+    width: 40vw;
+    height: 100vh;
+    left: 0;
+    bottom: 0;
+    top: 100vh;
+}
 
-.player1Name {
-    width: 50vw;
-    opacity: 1;
-    font-size:100px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
-    color: #FFFFFF;
-	font-family:Arial, Helvetica, sans-serif; 
-    margin-top: calc(8vh + 40px);
-    margin-left: calc(75vw - 115px);
+#player1Image {
+    position: relative;
+	width: 40vw;
+	height: auto;
+	align-content: center;
+	margin-top: 30vh;
+	opacity: 1;
+}
+
+.player2ImageWrapper {
+    position: absolute;
+    width: 40vw;
+    height: 100vh;
+    left: 60vw;
+    top: 100vh;
+}
+
+#player2Image {
+    position: relative;
+	width: 40vw;
+	height: auto;
+	align-content: center;
+	margin-top: 30vh;
+	opacity: 1;
 }
 
 .player1NameAnimate, .player2NameAnimate {
@@ -477,49 +849,6 @@ body {
   0%   { opacity: 1; }
   100% { opacity: 0; }
 }
-
-
-.player1ImageWrapper {
-    position: absolute;
-    width: 50vw;
-    height: 100vh;
-    left: 0;
-    bottom: 0;
-    top: 100vh;
-}
-
-.player1Image {
-    position: absolute;
-    bottom: 0vh;
-    margin-left: calc(25vw - 180px);
-    opacity: 0.9;
-}
-
-.player2Name {
-    width: 50vw;
-    opacity: 1;
-    font-size:100px; /*<-- TO CHANGE LEFT PANEL FONT SIZE*/ 
-    color: #FFFFFF;
-	font-family:Arial, Helvetica, sans-serif; 
-    margin-top: calc(8vh + 40px);
-    margin-left: calc(25vw - 120px);
-}
-
-.player2ImageWrapper {
-    position: absolute;
-    width: 50vw;
-    height: 100vh;
-    left: 50vw;
-    top: 100vh;
-}
-
-.player2Image {
-    position: absolute;
-    bottom: 0vh;
-    margin-left: calc(25vw - 180px);
-    opacity: 0.9;
-}
-
 
 
 /* ------------------------------------------- Radial Countdown ------------------------------------------- */

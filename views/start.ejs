@@ -1,28 +1,119 @@
 <!DOCTYPE html>
 
+
 <html>
 
 	<head>
 		<meta charset="utf-8">
-		<title>Junior Scoreboard</title>
+		<title>Junior Pong</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<link href="css/style.css" rel="stylesheet" type="text/css">
-        
+        <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
         <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="bundle.js"></script>
         <script type="text/javascript" src="script.js"></script>
     </head>
     
         
 	<body>
+		
+		<?php header("Access-Control-Allow-Origin: http://localhost:8000"); ?>
         
-        <div class="radial-timer">
-            <div class="radial-timer-half"></div>
-            <div class="radial-timer-half"></div>
-        </div>
-
+        <div id="landingPage">
+			<a href="/game">
+				<img id="juniorLogo" src="img/juniorLogo.png" alt="junior logo" width="570px" height="213.75px">
+			</a>
+			
+			<ul id="players">
+			</ul>
+        </div>  
+		
+		<script>
+			
+			
+			//Create a variable, "database," to refer to the database
+			var database = new Firebase("https://juniorpingpong.firebaseio.com/");
+			
+			//Create a variable, "databaseChildPlayers," to refer to a child element of the database, in this case "players"
+			var databaseChildPlayers = database.child("players");	
+			
+			//Create a variable, "playersList," to be passed into the database via "databaseChildPlayers"
+//			var playersList = {
+//				jeff: {
+//					name: "Jeff",
+//					image: img/jeff.png,
+//					wins: 0,
+//					losses: 0
+//				},
+//				sean: {
+//					name: "Sean",
+//					image: null,
+//					wins: 0,
+//					losses: 0
+//				},
+//				ash: {
+//					name: "Ash",
+//					image: null,
+//					wins: 0,
+//					losses: 0
+//				},	
+//				tony: {
+//					name: "Tony",
+//					image: null,
+//					wins: 0,
+//					losses: 0
+//				},
+//				zac: {
+//					name: "Zac",
+//					image: null,
+//					wins: 0,
+//					losses: 0
+//				},
+//				jp: {
+//					name: "JP",
+//					image: null,
+//					wins: 0,
+//					losses: 0
+//				}		
+//			}
+			
+			//Take the data from "playersList" and pass it into the child element of the database, "players," via "databaseChildPlayers"
+//			databaseChildPlayers.set(playersList);
+			
+//			// Get players from database 
+			databaseChildPlayers.once("value", function(snapshot) {
+				addPlayersToDOM(snapshot.val());
+			}, function (errorObject) {
+			  console.log("The read failed: " + errorObject.code);
+			});
+//			
+//			// Add players to the DOM aka HTML
+			function addPlayersToDOM(obj) {
+				console.log(obj);
+				
+				var players = obj.players;
+				
+				var playersNode = document.getElementById("players");
+				
+				for (key in players) {
+					
+					var player = players[key].name;
+					var node = document.createElement("li");
+					var textNode = document.createTextNode(player);
+					
+					node.appendChild(textNode);
+					playersNode.appendChild(node);
+					
+				}
+				
+			}
+			
+	
+		</script>
+         
     </body>
 	
 </html>

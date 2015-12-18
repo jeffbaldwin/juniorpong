@@ -1,11 +1,24 @@
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
-var port = 5000;
+var port = 8000;
 var path = require('path');
+
+
+//var Slackhook = require('slackhook');
+//var slackhook = new Slackhook({
+//	domain: 'alljunior',
+//	token: 'CldyQ1SkHRgGlt5qkd7ZL7D1'
+//});
+
+app.post('/outgoing', function(req, res){
+	var hook = slackhook.respond(req.body);
+	res.json({text: 'Hi ' + hook.user_name, username: 'Dr. Nick'});
+});
 
 // import data
 var data = require('./data/players');
+var all = require('./data/allplayers');
 
 // Make sure to include the ES6 & JSX transpiler
 require('babel/register');
@@ -27,7 +40,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', function(req, res) {
-    res.render('start');
+    res.render('game', {ctx: { 
+        players: all.players 
+    }});
 });
 
 app.get('/game', function(req, res) {
@@ -38,6 +53,14 @@ app.get('/game', function(req, res) {
     }});
 });
 
+// test route
+app.get('/', function (req, res) { res.status(200).send('Hello world!') });
+
+// error handler
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(400).send(err.message);
+});
 
 app.listen(port, function(req, res){
     console.log('listening on port: ' + port);

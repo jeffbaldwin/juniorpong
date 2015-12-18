@@ -12,6 +12,8 @@
     "babel": "^5.8.23",
     "body-parser": "^1.13.3",
     "ejs": "^2.3.3",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "node-slack": "0.0.7",
+    "slack-client": "^1.5.1"
   }
 }
