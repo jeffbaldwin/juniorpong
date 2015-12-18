@@ -440,7 +440,7 @@ function assign_player_1(){
 		document.getElementById("player1SmallName").innerHTML = player1Name;
 		document.getElementById("player1Wins").innerHTML = player1Wins;
 		document.getElementById("player1Losses").innerHTML = player1Losses;
-		document.getElementById("player1Image").src = "img/" + player1Name + "-06.png";
+		document.getElementById("player1Image").src = "img/" + player1Name.toLowerCase() + "-06.png";
 	}
 
 	setTimeout(function(){
@@ -479,7 +479,7 @@ function assign_player_2(){
 		document.getElementById("player2SmallName").innerHTML = player2Name;
 		document.getElementById("player2Wins").innerHTML = player2Wins;
 		document.getElementById("player2Losses").innerHTML = player2Losses;
-		document.getElementById("player2Image").src = "img/" + player2Name + "-06.png";
+		document.getElementById("player2Image").src = "img/" + player2Name.toLowerCase() + "-06.png";
 	}
 
 	setTimeout(function(){
